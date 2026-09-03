@@ -1853,6 +1853,7 @@
     let r = 0;
     for (const it of getPlan()) for (const m in it.months) {
       const e = it.months[m];
+      if (!e) continue;
       if (e.parcial) {
         if (cuentaIdFor(it.name) === id) r += pagoSum(e);
       } else if (e.pagado && e.cuenta === id) r += Number(e.monto);
@@ -3265,6 +3266,7 @@
     const depBy = {};
     for (const it of getPlan()) for (const m in it.months) {
       const e = it.months[m];
+      if (!e) continue;
       const dm = monthFromIdx(Number(m));
       if (e.parcial) {
         if (cuentaIdFor(it.name) !== c.id) continue;
